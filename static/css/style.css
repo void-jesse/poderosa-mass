@@ -1,0 +1,1429 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+
+:root {
+
+    --fundo: #120707;
+
+    --fundo-card: #210d0d;
+
+    --vermelho: #c51e2b;
+
+    --vermelho-claro: #ed3541;
+
+    --dourado: #d8ad63;
+
+    --creme: #fff0d9;
+
+    --texto: #fffaf3;
+
+    --texto-suave: #cdbfba;
+
+    --borda: rgba(226, 70, 70, 0.34);
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% -20%,
+            rgba(145, 15, 25, 0.38),
+            transparent 55%
+        ),
+        var(--fundo);
+
+    color: var(--texto);
+
+    font-family: "DM Sans", sans-serif;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+/* CABEÇALHO */
+
+.topo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 18px 5%;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(18,7,7,0.94);
+
+}
+
+
+.marca {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.marca img {
+
+    width: 66px;
+
+    height: 66px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--dourado);
+
+}
+
+
+.marca p {
+
+    margin: 0 0 4px;
+
+    color: var(--dourado);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+.marca h1 {
+
+    margin: 0;
+
+    font: 800 20px "Playfair Display", serif;
+
+}
+
+
+.marca h1 span {
+    color: var(--dourado);
+}
+
+
+.atalho-carrinho {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--texto);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+}
+
+
+.atalho-carrinho strong {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 29px;
+
+    height: 29px;
+
+    border-radius: 50%;
+
+    background: var(--vermelho);
+
+}
+
+
+/* CONTEÚDO PRINCIPAL */
+
+main {
+
+    width: min(1120px, 92%);
+
+    margin: auto;
+
+}
+
+
+.apresentacao {
+
+    text-align: center;
+
+    padding: 54px 12px 42px;
+
+}
+
+
+.chamada {
+
+    color: var(--dourado);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.apresentacao h2 {
+
+    margin: 8px 0;
+
+    font: 800 clamp(38px, 7vw, 64px) "Playfair Display", serif;
+
+}
+
+
+.apresentacao h2 span {
+
+    color: var(--vermelho-claro);
+
+    font-style: italic;
+
+}
+
+
+.apresentacao > p:last-child {
+
+    color: var(--texto-suave);
+
+}
+
+
+/* TÍTULOS DAS SEÇÕES */
+
+.titulo-secao {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.titulo-secao h2 {
+
+    margin: 0;
+
+    font: 700 clamp(27px, 4vw, 36px) "Playfair Display", serif;
+
+}
+
+
+.sobretitulo {
+
+    margin: 0 0 4px;
+
+    color: var(--dourado);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+.quantidade-produtos {
+
+    padding: 7px 13px;
+
+    border-radius: 4px 15px 4px 15px;
+
+    background: var(--vermelho);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+/* CARDÁPIO */
+
+.secao-cardapio {
+
+    padding: 25px 0 42px;
+
+}
+
+
+.grade-produtos {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 17px;
+
+}
+
+
+.card-produto {
+
+    display: grid;
+
+    grid-template-columns: 38% 1fr;
+
+    overflow: hidden;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #2a1010,
+        #170909
+    );
+
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+
+}
+
+
+.imagem-produto {
+
+    min-height: 190px;
+
+    background: #321414;
+
+}
+
+
+.imagem-produto img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.conteudo-produto {
+
+    padding: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+}
+
+
+.conteudo-produto h3 {
+
+    margin: 0 0 7px;
+
+    color: var(--creme);
+
+    font: 700 21px "Playfair Display", serif;
+
+    text-transform: uppercase;
+
+}
+
+
+.conteudo-produto p {
+
+    margin: 0;
+
+    color: var(--texto-suave);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+.precos {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: auto 0 12px;
+
+    padding-top: 13px;
+
+}
+
+
+.precos span {
+
+    background: #a91622;
+
+    border-radius: 5px;
+
+    padding: 6px 10px;
+
+    font-size: 12px;
+
+}
+
+
+.botao-adicionar {
+
+    width: 100%;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    padding: 11px 15px;
+
+    background: var(--dourado);
+
+    color: #25100a;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition: 0.2s;
+
+}
+
+
+.botao-adicionar:hover {
+
+    filter: brightness(1.15);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* PORÇÕES EXTRAS */
+
+.secao-extras {
+
+    padding: 28px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 17px;
+
+    background: linear-gradient(
+        135deg,
+        #2a1010,
+        #170909
+    );
+
+}
+
+
+.lista-extras {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 0 28px;
+
+}
+
+
+.extra-resumo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px dashed rgba(255,255,255,0.14);
+
+    font-size: 14px;
+
+}
+
+
+.extra-resumo strong {
+
+    color: var(--dourado);
+
+}
+
+
+.aviso-troca {
+
+    margin: 24px 0 6px;
+
+    padding: 13px;
+
+    border-radius: 8px;
+
+    background: var(--creme);
+
+    color: #32130e;
+
+    font-weight: 800;
+
+    text-align: center;
+
+}
+
+
+.texto-ajuda {
+
+    color: var(--texto-suave);
+
+    font-size: 13px;
+
+}
+
+
+/* CARRINHO */
+
+.secao-carrinho {
+
+    padding: 28px;
+
+    margin: 42px 0;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 17px;
+
+    background: #1d0b0b;
+
+}
+
+
+.carrinho-vazio {
+
+    color: var(--texto-suave);
+
+    font-size: 14px;
+
+}
+
+
+.item-carrinho {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.item-carrinho div:first-child {
+
+    display: grid;
+
+    gap: 4px;
+
+}
+
+
+.item-carrinho small {
+
+    color: var(--texto-suave);
+
+}
+
+
+.preco-item {
+
+    text-align: right;
+
+    white-space: nowrap;
+
+}
+
+
+.link-remover {
+
+    display: block;
+
+    margin: 5px 0 0 auto;
+
+    padding: 0;
+
+    border: 0;
+
+    background: none;
+
+    color: #ff9292;
+
+    font-size: 12px;
+
+}
+
+
+.linha-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 19px 0;
+
+    font-size: 17px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+
+}
+
+
+.linha-total strong {
+
+    color: var(--dourado);
+
+    font-size: 21px;
+
+}
+
+
+/* FORMULÁRIO */
+
+#form-finalizacao {
+
+    display: grid;
+
+    gap: 14px;
+
+    padding-top: 20px;
+
+}
+
+
+#form-finalizacao h3 {
+
+    margin: 0;
+
+    font: 700 23px "Playfair Display", serif;
+
+}
+
+
+#form-finalizacao label {
+
+    display: grid;
+
+    gap: 7px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+#form-finalizacao input,
+#form-finalizacao textarea {
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid rgba(255,255,255,0.17);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #100707;
+
+    color: white;
+
+}
+
+
+#form-finalizacao input:focus,
+#form-finalizacao textarea:focus {
+
+    border-color: var(--dourado);
+
+}
+
+
+.nota-entrega {
+
+    color: var(--texto-suave);
+
+    font-size: 12px;
+
+}
+
+
+.botao-whatsapp {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #1eaa61;
+
+    color: white;
+
+    font-weight: 800;
+
+    transition: 0.2s;
+
+}
+
+
+.botao-whatsapp:hover {
+
+    filter: brightness(1.1);
+
+}
+
+
+#mensagem-erro {
+
+    color: #ff9292;
+
+    font-size: 13px;
+
+}
+
+
+/* MODAL DE PERSONALIZAÇÃO */
+
+#modal-personalizacao {
+
+    width: min(500px, 92%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 17px;
+
+    background: #1d0b0b;
+
+    color: var(--texto);
+
+}
+
+
+#modal-personalizacao::backdrop {
+
+    background: rgba(0,0,0,0.8);
+
+    backdrop-filter: blur(4px);
+
+}
+
+
+.modal-topo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+}
+
+
+.modal-topo h2 {
+
+    margin: 0;
+
+    font: 700 26px "Playfair Display", serif;
+
+}
+
+
+.fechar-modal {
+
+    width: 35px;
+
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #3b1515;
+
+    color: white;
+
+    font-size: 24px;
+
+}
+
+
+#modal-descricao {
+
+    color: var(--texto-suave);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+#form-personalizacao {
+
+    display: grid;
+
+    gap: 18px;
+
+}
+
+
+#form-personalizacao fieldset {
+
+    display: grid;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 10px;
+
+}
+
+
+#form-personalizacao legend {
+
+    padding: 0 7px;
+
+    color: var(--dourado);
+
+    font-weight: 800;
+
+}
+
+
+#form-personalizacao fieldset > label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+}
+
+
+#form-personalizacao fieldset > label strong {
+
+    margin-left: auto;
+
+    color: var(--dourado);
+
+}
+
+
+.campo-modal {
+
+    display: grid;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.campo-modal input,
+.campo-modal select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 8px;
+
+    background: #100707;
+
+    color: white;
+
+}
+
+
+.opcao-extra {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+}
+
+
+.opcao-extra strong {
+
+    margin-left: auto;
+
+    color: var(--dourado);
+
+}
+
+
+.resumo-modal {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
+
+    border-top: 1px solid var(--borda);
+
+    font-size: 16px;
+
+}
+
+
+.resumo-modal strong {
+
+    color: var(--dourado);
+
+    font-size: 20px;
+
+}
+
+
+/* RODAPÉ */
+
+footer {
+
+    display: grid;
+
+    justify-items: center;
+
+    padding: 30px 15px 40px;
+
+    background: #0b0404;
+
+    color: var(--texto-suave);
+
+    text-align: center;
+
+}
+
+
+footer img {
+
+    width: 54px;
+
+    height: 54px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+}
+
+
+footer p {
+
+    margin: 9px 0 2px;
+
+    color: white;
+
+    font: 700 19px "Playfair Display", serif;
+
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 720px) {
+
+    .topo {
+        padding: 13px 4%;
+    }
+
+    .marca img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .marca h1 {
+        font-size: 16px;
+    }
+
+    .atalho-carrinho span {
+        display: none;
+    }
+
+    .apresentacao {
+        padding: 42px 8px 30px;
+    }
+
+    .grade-produtos {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .card-produto {
+        grid-template-columns: 36% 1fr;
+        min-height: 170px;
+    }
+
+    .imagem-produto {
+        min-height: 170px;
+    }
+
+    .conteudo-produto {
+        padding: 12px;
+    }
+
+    .conteudo-produto h3 {
+        font-size: 18px;
+    }
+
+    .conteudo-produto p {
+        font-size: 11px;
+    }
+
+    .precos {
+        gap: 5px;
+        padding-top: 9px;
+        margin-bottom: 9px;
+    }
+
+    .precos span {
+        font-size: 11px;
+        padding: 5px 7px;
+    }
+
+    .botao-adicionar {
+        padding: 10px 7px;
+        font-size: 11px;
+    }
+
+    .secao-extras,
+    .secao-carrinho {
+        padding: 20px 15px;
+    }
+
+    .lista-extras {
+        gap: 0 15px;
+    }
+
+}
+
+
+@media (max-width: 390px) {
+
+    .card-produto {
+        grid-template-columns: 33% 1fr;
+    }
+
+    .conteudo-produto h3 {
+        font-size: 16px;
+    }
+
+    .lista-extras {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* MODAL DE VISUALIZAÇÃO DO PEDIDO */
+
+#modal-pedido {
+
+    width: min(500px, 92%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 17px;
+
+    background: #1d0b0b;
+
+    color: var(--texto);
+
+}
+
+#modal-pedido::backdrop {
+
+    background: rgba(0,0,0,0.8);
+
+    backdrop-filter: blur(4px);
+
+}
+
+#mensagem-pedido {
+
+    padding: 16px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 9px;
+
+    background: #100707;
+
+    color: var(--texto);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+
+}
+
+.botao-copiar {
+
+    width: 100%;
+
+    margin-bottom: 12px;
+
+    padding: 13px;
+
+    border: 1px solid var(--dourado);
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--dourado);
+
+    font-weight: 700;
+
+}
+
+.sucesso-pedido {
+
+    padding: 20px 5px;
+
+    text-align: center;
+
+}
+
+.sucesso-pedido h2 {
+
+    font: 700 28px "Playfair Display", serif;
+
+}
+
+.icone-sucesso {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: 0 auto;
+
+    border-radius: 50%;
+
+    background: #1eaa61;
+
+    color: white;
+
+    font-size: 35px;
+
+    font-weight: 800;
+
+}
+
+#modal-pedido [hidden] {
+
+    display: none !important;
+
+}
+
+/* AJUSTES EXTRAS PARA CELULARES */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 15px;
+}
+
+body {
+    min-width: 320px;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* TELAS PEQUENAS */
+
+@media (max-width: 600px) {
+
+    main {
+        width: 94%;
+    }
+
+    .topo {
+        gap: 8px;
+        padding: 12px 3%;
+    }
+
+    .marca {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .marca img {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+    }
+
+    .marca h1 {
+        font-size: 14px;
+    }
+
+    .marca p {
+        font-size: 8px;
+        letter-spacing: 0.08em;
+    }
+
+    .atalho-carrinho {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .apresentacao {
+        padding: 35px 5px 25px;
+    }
+
+    .apresentacao h2 {
+        font-size: clamp(34px, 10vw, 48px);
+    }
+
+    .grade-produtos {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card-produto {
+        grid-template-columns: 34% minmax(0, 1fr);
+        min-height: 160px;
+    }
+
+    .imagem-produto {
+        min-height: 160px;
+    }
+
+    .conteudo-produto {
+        min-width: 0;
+        padding: 11px;
+    }
+
+    .conteudo-produto h3 {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .conteudo-produto p {
+        font-size: 12px;
+    }
+
+    .precos span {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .botao-adicionar {
+        min-height: 42px;
+        font-size: 11px;
+    }
+
+    .secao-extras,
+    .secao-carrinho {
+        padding: 18px 13px;
+    }
+
+    .lista-extras {
+        grid-template-columns: 1fr;
+    }
+
+    .extra-resumo {
+        font-size: 13px;
+    }
+
+    #form-finalizacao input,
+    #form-finalizacao textarea,
+    #form-personalizacao input,
+    #form-personalizacao select {
+        font-size: 16px;
+    }
+
+    .botao-whatsapp {
+        min-height: 50px;
+        font-size: 14px;
+    }
+
+    #modal-personalizacao {
+        width: 94%;
+        max-width: 500px;
+        max-height: 90vh;
+        max-height: 90dvh;
+        padding: 18px;
+        margin: auto;
+    }
+
+    #form-personalizacao fieldset {
+        padding: 12px;
+    }
+
+    .opcao-extra {
+        min-height: 32px;
+        flex-wrap: wrap;
+    }
+
+    .item-carrinho {
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .linha-total {
+        font-size: 15px;
+    }
+
+}
+
+
+/* CELULARES MUITO ESTREITOS */
+
+@media (max-width: 360px) {
+
+    .marca h1 {
+        font-size: 12px;
+    }
+
+    .marca p {
+        font-size: 7px;
+    }
+
+    .card-produto {
+        grid-template-columns: 31% minmax(0, 1fr);
+    }
+
+    .conteudo-produto h3 {
+        font-size: 15px;
+    }
+
+    .precos {
+        gap: 4px;
+    }
+
+    .precos span {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+}

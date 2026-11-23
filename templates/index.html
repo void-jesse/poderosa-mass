@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#180707">
+
+    <title>Poderosa Massa | Cardápio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <div class="marca">
+            <img
+                src="{{ url_for('static', filename='img/logo-poderosa-massa.jpg') }}"
+                alt="Logo Poderosa Massa"
+            >
+
+            <div>
+                <p>O melhor delivery de massas</p>
+                <h1>PODEROSA <span>MASSA</span></h1>
+            </div>
+        </div>
+
+        <a href="#carrinho" class="atalho-carrinho">
+            Meu pedido
+            <strong id="contador-carrinho">0</strong>
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <!-- APRESENTAÇÃO -->
+
+        <section class="apresentacao">
+
+            <p class="chamada">
+                O melhor delivery de massas
+            </p>
+
+            <h2>
+                Nosso <span>Cardápio</span>
+            </h2>
+
+            <p>
+                Escolha sua massa favorita!
+            </p>
+
+        </section>
+
+
+        <!-- CARDÁPIO -->
+
+        <section class="secao-cardapio">
+
+            <div class="titulo-secao">
+
+                <div>
+                    <p class="sobretitulo">PODEROSA MASSA</p>
+                    <h2>Nossas massas</h2>
+                </div>
+
+                <span class="quantidade-produtos">
+                    {{ produtos|length }} sabores
+                </span>
+
+            </div>
+
+
+            <div class="grade-produtos">
+
+                {% for produto in produtos %}
+
+                <article class="card-produto">
+
+                    <div class="imagem-produto">
+
+                        <img
+                            src="{{ url_for('static', filename='img/' + produto.imagem) }}"
+                            alt="{{ produto.nome }}"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="conteudo-produto">
+
+                        <h3>{{ produto.nome }}</h3>
+
+                        <p>{{ produto.descricao }}</p>
+
+
+                        <div class="precos">
+
+                            <span>
+                                P
+                                <strong>
+                                    R$ {{ "%.2f"|format(produto.precos.pequeno)|replace(".", ",") }}
+                                </strong>
+                            </span>
+
+                            <span>
+                                M
+                                <strong>
+                                    R$ {{ "%.2f"|format(produto.precos.medio)|replace(".", ",") }}
+                                </strong>
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="botao-adicionar"
+                            type="button"
+                            data-produto-id="{{ produto.id }}"
+                        >
+                            Personalizar pedido
+                        </button>
+
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- ADICIONAIS -->
+
+        <section class="secao-extras">
+
+            <div class="titulo-secao">
+
+                <div>
+                    <p class="sobretitulo">DO SEU JEITO</p>
+                    <h2>Porções extras</h2>
+                </div>
+
+            </div>
+
+
+            <div class="lista-extras">
+
+                {% for adicional in adicionais %}
+
+                <div class="extra-resumo">
+
+                    <span>{{ adicional.nome }}</span>
+
+                    <strong>
+                        R$ {{ "%.2f"|format(adicional.preco)|replace(".", ",") }}
+                    </strong>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <p class="aviso-troca">
+                As massas podem ser substituídas pelo cliente.
+            </p>
+
+            <p class="texto-ajuda">
+                Opções: Fettuccine, Penne e Espaguete.
+            </p>
+
+        </section>
+
+
+        <!-- CARRINHO -->
+
+        <section class="secao-carrinho" id="carrinho">
+
+            <div class="titulo-secao">
+
+                <div>
+                    <p class="sobretitulo">QUASE LÁ</p>
+                    <h2>Seu pedido</h2>
+                </div>
+
+            </div>
+
+
+            <div id="itens-carrinho">
+
+                <p class="carrinho-vazio">
+                    Seu carrinho ainda está vazio.
+                </p>
+
+            </div>
+
+
+            <div class="linha-total">
+
+                <span>Total dos produtos</span>
+
+                <strong id="valor-total">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <!-- DADOS DO CLIENTE -->
+
+            <form id="form-finalizacao">
+
+                <h3>Dados para entrega</h3>
+
+
+                <label>
+                    Seu nome
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Como podemos chamar você?"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Endereço completo
+
+                    <textarea
+                        id="endereco"
+                        placeholder="Rua, número, bairro e cidade"
+                        required
+                    ></textarea>
+                </label>
+
+
+                <label>
+                    Ponto de referência
+
+                    <input
+                        type="text"
+                        id="referencia"
+                        placeholder="Opcional"
+                    >
+                </label>
+
+
+                <label>
+                    Observações
+
+                    <textarea
+                        id="observacoes"
+                        placeholder="Alguma informação adicional?"
+                    ></textarea>
+                </label>
+
+
+                <p class="nota-entrega">
+                    A taxa de entrega e a forma de pagamento
+                    serão confirmadas pelo WhatsApp.
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="botao-whatsapp"
+                >
+                    Enviar pedido pelo WhatsApp ↗
+                </button>
+
+
+                <p id="mensagem-erro" role="alert"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL DE PERSONALIZAÇÃO -->
+
+    <dialog id="modal-personalizacao">
+
+        <form id="form-personalizacao">
+
+            <div class="modal-topo">
+
+                <div>
+                    <p class="sobretitulo">MONTE SEU PEDIDO</p>
+                    <h2 id="modal-nome-produto"></h2>
+                </div>
+
+
+                <button
+                    type="button"
+                    id="fechar-modal"
+                    class="fechar-modal"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <p id="modal-descricao"></p>
+
+
+            <!-- TAMANHO -->
+
+            <fieldset>
+
+                <legend>Escolha o tamanho</legend>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="tamanho"
+                        value="pequeno"
+                        checked
+                    >
+
+                    Pequeno
+
+                    <strong id="preco-pequeno"></strong>
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="tamanho"
+                        value="medio"
+                    >
+
+                    Médio
+
+                    <strong id="preco-medio"></strong>
+                </label>
+
+            </fieldset>
+
+
+            <!-- TIPO DE MASSA -->
+
+            <label class="campo-modal">
+
+                Tipo de massa
+
+                <select id="tipo-massa" required>
+
+                    {% for tipo in tipos_massa %}
+
+                    <option value="{{ tipo }}">
+                        {{ tipo }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </label>
+
+
+            <!-- MOLHOS -->
+
+            <div id="area-molhos"></div>
+
+
+            <!-- ADICIONAIS -->
+
+            <fieldset>
+
+                <legend>Porções extras</legend>
+
+                <div id="lista-adicionais"></div>
+
+            </fieldset>
+
+
+            <!-- QUANTIDADE -->
+
+            <label class="campo-modal">
+
+                Quantidade
+
+                <input
+                    type="number"
+                    id="quantidade"
+                    value="1"
+                    min="1"
+                    max="20"
+                    required
+                >
+
+            </label>
+
+
+            <!-- SUBTOTAL -->
+
+            <div class="resumo-modal">
+
+                <span>Subtotal</span>
+
+                <strong id="subtotal-modal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="botao-whatsapp"
+            >
+                Adicionar ao carrinho
+            </button>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <img
+            src="{{ url_for('static', filename='img/logo-poderosa-massa.jpg') }}"
+            alt="Logo Poderosa Massa"
+        >
+
+        <p>Poderosa Massa</p>
+
+        <small>O melhor delivery de massas</small>
+
+    </footer>
+
+
+    <!-- DADOS ENVIADOS DO PYTHON PARA O JAVASCRIPT -->
+
+    <script id="catalogo" type="application/json">
+        {{ {
+            "produtos": produtos,
+            "adicionais": adicionais,
+            "tiposMassa": tipos_massa
+        } | tojson }}
+    </script>
+
+
+    <!-- JAVASCRIPT DO CARRINHO -->
+
+    <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
+
+</body>
+
+</html>
+
